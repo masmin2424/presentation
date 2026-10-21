@@ -1,0 +1,23 @@
+{
+  "type": "Feature",
+  "properties": {
+    "units": "us",
+    "generatedAt": "SAMPLE DATA - offline copy for the demo",
+    "periods": [
+      { "number": 1,  "name": "Today",          "temperature": 74, "temperatureUnit": "F", "shortForecast": "Sunny" },
+      { "number": 2,  "name": "Tonight",        "temperature": 53, "temperatureUnit": "F", "shortForecast": "Clear" },
+      { "number": 3,  "name": "Saturday",       "temperature": 77, "temperatureUnit": "F", "shortForecast": "Sunny" },
+      { "number": 4,  "name": "Saturday Night", "temperature": 54, "temperatureUnit": "F", "shortForecast": "Mostly Clear" },
+      { "number": 5,  "name": "Sunday",         "temperature": 79, "temperatureUnit": "F", "shortForecast": "Sunny" },
+      { "number": 6,  "name": "Sunday Night",   "temperature": 55, "temperatureUnit": "F", "shortForecast": "Patchy Fog" },
+      { "number": 7,  "name": "Monday",         "temperature": 72, "temperatureUnit": "F", "shortForecast": "Partly Sunny" },
+      { "number": 8,  "name": "Monday Night",   "temperature": 52, "temperatureUnit": "F", "shortForecast": "Partly Cloudy" },
+      { "number": 9,  "name": "Tuesday",        "temperature": 69, "temperatureUnit": "F", "shortForecast": "Mostly Sunny" },
+      { "number": 10, "name": "Tuesday Night",  "temperature": 51, "temperatureUnit": "F", "shortForecast": "Mostly Clear" },
+      { "number": 11, "name": "Wednesday",      "temperature": 71, "temperatureUnit": "F", "shortForecast": "Sunny" },
+      { "number": 12, "name": "Wednesday Night","temperature": 52, "temperatureUnit": "F", "shortForecast": "Clear" },
+      { "number": 13, "name": "Thursday",       "temperature": 73, "temperatureUnit": "F", "shortForecast": "Sunny" },
+      { "number": 14, "name": "Thursday Night", "temperature": 53, "temperatureUnit": "F", "shortForecast": "Clear" }
+    ]
+  }
+}
