@@ -12,6 +12,21 @@ A presentation and runnable demos about **JEP 540: Simple JSON API (Incubator)**
 | [`video/`](video/) | The presentation video and an AI-generated intro clip |
 | [`images/`](images/) | The AI-generated presenter image |
 | [`demo/`](demo/) | Runnable Java demos, each with a **before** (Java 21 + Jackson) and **after** (JDK 28 built-in API) version |
+| [`jdk/`](jdk/) | OpenJDK 28 early-access build 20 for **macOS (Apple Silicon)**, stored with Git LFS |
+
+## JDK 28 for macOS (Apple Silicon)
+
+`jdk/openjdk-28-ea+20_macos-aarch64_bin.tar.gz` is a copy of the official OpenJDK early-access build, licensed under GPLv2 with the Classpath Exception (see the `legal/` folder inside the archive).
+
+```
+tar -xzf jdk/openjdk-28-ea+20_macos-aarch64_bin.tar.gz
+export JAVA_HOME="$PWD/jdk-28.jdk/Contents/Home"
+export PATH="$JAVA_HOME/bin:$PATH"
+java -version
+```
+
+- Clone with Git LFS installed (`git lfs install`), or download the file from GitHub's web page: otherwise you only get a small pointer file.
+- Early-access builds are replaced regularly. For the newest build (and Windows/Linux), use the official site: https://jdk.java.net/28/
 
 ## The demos in 30 seconds
 
