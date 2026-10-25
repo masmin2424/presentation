@@ -4,20 +4,29 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.File;
 
 /**
- * BEFORE version of ChocolateDemo: Java 21 + Jackson (external library).
- * Run:  java -cp "lib/*" ChocolateDemoBefore.java
+ * BEFORE: the same nightly batch on Java 21 with Jackson (external library, default settings).
  *
- * Set "quantity": "12 pcs" in chocolate-order.json (partner changed their export script)
- * -> Jackson's asInt() returns 0, no error: free chocolate!
+ * Run:  java -cp "lib/*" ChocolateDemoBefore.java [order-file]
+ *       (default: chocolate-order.json; try the files in scenarios/)
+ *
+ * What Jackson's tree API does by default with each partner change (tested with Jackson 2.18.2):
+ *   2-units-in-quantity     "12 pcs"       -> asInt() returns 0: 12 pralines for free
+ *   3-duplicate-key         quantity twice -> the last value wins: 1 instead of 12
+ *   4-giftwrap-in-french    "oui"          -> asBoolean() returns false: gift wrap silently dropped
+ *   5-new-order-id-format   "A-1042"       -> asLong() returns 0: invoice for order #0
+ * No error in any case: the batch finishes "green".
  */
 public class ChocolateDemoBefore {
 
     static final double GIFT_WRAP_PRICE = 2.50;
 
     public static void main(String[] args) throws Exception {
-        JsonNode order = new ObjectMapper().readTree(new File("chocolate-order.json"));
+        File file = new File(args.length > 0 ? args[0] : "chocolate-order.json");
+        JsonNode order = new ObjectMapper().readTree(file);
 
-        System.out.println(order.get("shop").asText() + " - order for " + order.get("customer").asText());
+        long orderId = order.get("orderId").asLong();
+        System.out.println("Invoice for order #" + orderId
+                + " - " + order.get("shop").asText() + ", for " + order.get("customer").asText());
         System.out.println();
 
         double total = 0;

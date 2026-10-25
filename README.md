@@ -30,18 +30,22 @@ java -version
 
 ## The chocolate demo in 30 seconds 🍫
 
-A nightly batch reads a partner's order file. One day the partner changes their export script and writes `"quantity": "12 pcs"` instead of `12`.
+A nightly batch turns a partner's JSON order file into an invoice (normally **67,70 EUR**). The partner changes their export script in 4 ways. Each change shows one JEP 540 rule:
 
-| | Before: Java 21 + Jackson | After: JDK 28 built-in JSON API |
-|---|---|---|
-| Normal order | TOTAL 67,70 EUR | TOTAL 67,70 EUR |
-| `"quantity": "12 pcs"` | Silently 0: TOTAL 48,50 EUR, 12 pralines for free | Order rejected with a clear error |
+| The partner writes | Before: Java 21 + Jackson (default) | After: JDK 28, JEP 540 | The rule |
+|---|---|---|---|
+| `"quantity": "12 pcs"` | 0 billed, 48,50 EUR, no error | Rejected | No silent conversion |
+| `"quantity"` twice | Last one wins, 50,10 EUR, no error | Rejected | Strict JSON: no duplicate keys |
+| `"giftWrap": "oui"` | Gift wrap dropped, 65,20 EUR, no error | Rejected | A boolean is `true` or `false` |
+| `"orderId": "A-1042"` | Invoice for order #0 | Invoice for A-1042 | Sealed types + `switch`: handled on purpose |
 
 ```
 cd demo
-java -cp "lib/*" ChocolateDemoBefore.java
-java --add-modules jdk.incubator.json ChocolateDemo.java
+java -cp "lib/*" ChocolateDemoBefore.java scenarios/2-units-in-quantity.json
+java --add-modules jdk.incubator.json ChocolateDemo.java scenarios/2-units-in-quantity.json
 ```
+
+The Jackson results are real output (Jackson 2.18.2, Java 21). The JDK 28 results are JEP 540's designed behaviour.
 
 See [`demo/README.md`](demo/README.md) for setup, [`demo/CHOCOLATE-DEMO.md`](demo/CHOCOLATE-DEMO.md) for the full story and presentation script, [`demo/DEMO-CHEATSHEET.md`](demo/DEMO-CHEATSHEET.md) for a two-terminal run, and [`demo/FAQ.md`](demo/FAQ.md) for answers to common questions.
 
