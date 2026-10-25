@@ -8,7 +8,7 @@ Honest, short answers for sceptical or senior developers. Several of these were 
 For our applications, we don't: Jackson stays. This is for everything around them: scripts, tests, diagnostic tools and prototypes, where adding a library and a Maven project is overkill. The JEP itself says replacing existing JSON libraries is explicitly not a goal.
 
 **We can't use it in production for a year or more. Why talk about it now?**
-Because now is when it can still change. In incubator, real feedback shapes the final API. And we can already use it at no risk in tools that never go to production, like the thread-dump analyser.
+Because now is when it can still change. In incubator, real feedback shapes the final API. And we can already use it at no risk in tools that never go to production, like a batch-file checker or a small import script.
 
 **Will Jackson or Spring stop working, or need migrating?**
 No. Nothing changes for existing code. It's a new, separate API, and the frameworks keep using their own libraries.
@@ -39,7 +39,7 @@ On purpose. It follows the official JSON standard, RFC 8259, exactly. If differe
 They're rejected. Other parsers might keep the first one, the last one, or something random. Here there's no ambiguity.
 
 **What happens if a value has the wrong type?**
-It throws a clear error naming the path. Show it with `"port": "abc"`: Jackson's `asInt()` silently returns `0`.
+It throws a clear error naming the path. Show it with the chocolate demo: `"quantity": "12 pcs"` makes Jackson's `asInt()` silently return `0`.
 
 **Are the JSON objects mutable?**
 No, they're immutable. Even if you build one from a mutable `Map`, it takes its own copy. That was asked at the talk too.
@@ -62,4 +62,4 @@ That was JEP 198, and it tried to do everything: streaming, building, transforma
 
 - **If you don't know, say so:** "Good question, I'll check the JEP." The JEP is detailed and clearly written: https://openjdk.org/jeps/540
 - **Don't oversell it.** The strongest position is honesty: "Not for production yet, but free to try and useful for tools."
-- **Point back to the demos:** the `port = 0` moment and the thread dump answer a lot of "why should I care" questions.
+- **Point back to the demos:** the "free pralines" moment (`0 x Manon cafe`) answers a lot of "why should I care" questions.

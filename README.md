@@ -11,7 +11,7 @@ A presentation and runnable demos about **JEP 540: Simple JSON API (Incubator)**
 | [`slides/`](slides/) | The presentation, as [PDF](slides/everyday-json-in-the-jdk.pdf) and [PowerPoint](slides/everyday-json-in-the-jdk.pptx) |
 | [`video/`](video/) | The presentation video and an AI-generated intro clip |
 | [`images/`](images/) | The AI-generated presenter image |
-| [`demo/`](demo/) | Runnable Java demos, each with a **before** (Java 21 + Jackson) and **after** (JDK 28 built-in API) version |
+| [`demo/`](demo/) | The chocolate batch demo, in a **before** (Java 21 + Jackson) and **after** (JDK 28 built-in API) version |
 | [`jdk/`](jdk/) | OpenJDK 28 early-access build 20 for **macOS (Apple Silicon)**, stored with Git LFS |
 
 ## JDK 28 for macOS (Apple Silicon)
@@ -28,25 +28,22 @@ java -version
 - Clone with Git LFS installed (`git lfs install`), or download the file from GitHub's web page: otherwise you only get a small pointer file.
 - Early-access builds are replaced regularly. For the newest build (and Windows/Linux), use the official site: https://jdk.java.net/28/
 
-## The demos in 30 seconds
+## The chocolate demo in 30 seconds 🍫
 
-You need **JDK 28** ([early access builds](https://jdk.java.net/28/)). No Maven, no libraries:
+A nightly batch reads a partner's order file. One day the partner changes their export script and writes `"quantity": "12 pcs"` instead of `12`.
+
+| | Before: Java 21 + Jackson | After: JDK 28 built-in JSON API |
+|---|---|---|
+| Normal order | TOTAL 67,70 EUR | TOTAL 67,70 EUR |
+| `"quantity": "12 pcs"` | Silently 0: TOTAL 48,50 EUR, 12 pralines for free | Order rejected with a clear error |
 
 ```
 cd demo
-java --add-modules jdk.incubator.json ConfigDemo.java
+java -cp "lib/*" ChocolateDemoBefore.java
+java --add-modules jdk.incubator.json ChocolateDemo.java
 ```
 
-| Demo | What it shows |
-|---|---|
-| `ConfigDemo` | Read a config file, with defaults and clear errors |
-| `BuildJsonDemo` | Build JSON safely instead of gluing strings together |
-| `WeatherDemo` | The JEP's own example: average temperature from a forecast |
-| `ThreadDumpDemo` | Analyse a real JDK thread dump in a few lines |
-| `ComicsDemo` 🇧🇪 | Belgian comics: handle missing and `null` fields simply |
-| `ChocolateDemo` 🇧🇪 | A batch reads a partner's order file: Jackson silently turns `"12 pcs"` into 0, the new API rejects it |
-
-See [`demo/README.md`](demo/README.md) for all commands, [`demo/DEMO-CHEATSHEET.md`](demo/DEMO-CHEATSHEET.md) for a side-by-side before/after run, and [`demo/FAQ.md`](demo/FAQ.md) for answers to common questions.
+See [`demo/README.md`](demo/README.md) for setup, [`demo/CHOCOLATE-DEMO.md`](demo/CHOCOLATE-DEMO.md) for the full story and presentation script, [`demo/DEMO-CHEATSHEET.md`](demo/DEMO-CHEATSHEET.md) for a two-terminal run, and [`demo/FAQ.md`](demo/FAQ.md) for answers to common questions.
 
 ## Important to know
 
@@ -59,5 +56,5 @@ See [`demo/README.md`](demo/README.md) for all commands, [`demo/DEMO-CHEATSHEET.
 - [JEP 540: Simple JSON API (Incubator)](https://openjdk.org/jeps/540) on openjdk.org
 - Inspired by the Devoxx talk **"Everyday JSON"** by Viktor Klang and Alan Bateman (Oracle Java Platform Group)
 - Feedback on the API goes to the OpenJDK team: core-libs-dev@openjdk.org
-- Comic series names and creators are used for illustration only. The chocolate shop and prices are fictional.
+- The chocolate shop, the partner and the prices are fictional.
 - The presenter image and intro clip are AI-generated (Grok).

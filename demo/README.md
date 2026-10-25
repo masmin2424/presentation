@@ -1,79 +1,51 @@
-# JEP 540 – Everyday JSON demo
+# JEP 540 – The chocolate demo 🍫
 
-Plain Java files. No Maven, no IDE setup, no scripts. Just a terminal and JDK 28.
+One demo, one story: a nightly batch reads a partner's order file. The partner changes their export script and writes `"quantity": "12 pcs"` instead of `12`.
 
-## Setup (once)
+- **Before** (Java 21 + Jackson): the quantity silently becomes `0`. The batch stays green, and 12 pralines are invoiced for free.
+- **After** (JDK 28, built-in JSON API): the order is **rejected** with a clear error.
 
-1. Download **JDK 28** from https://jdk.java.net/28/ and unzip it to `C:\jdk-28`.
-2. Open a terminal **in this folder** and run (PowerShell):
+The full story, the step-by-step script and the honest "can this happen to us?" answer are in [CHOCOLATE-DEMO.md](CHOCOLATE-DEMO.md).
 
-```
-$env:Path = "C:\jdk-28\bin;$env:Path"
-java -version
-```
+## Files
 
-You should see `28`. This only changes the current terminal; your normal Java stays the default everywhere else.
+| File | What it is |
+|---|---|
+| `chocolate-order.json` | The partner's order file (4 kinds of pralines, optional gift wrap) |
+| `ChocolateDemoBefore.java` | Reads the order with **Jackson** (Java 21) |
+| `ChocolateDemo.java` | Reads the order with the **built-in JSON API** (JDK 28) |
+| `CHOCOLATE-DEMO.md` | The story and the presentation script |
+| `DEMO-CHEATSHEET.md` | The commands for two terminals side by side |
+| `FAQ.md` | Answers to sceptical questions |
+
+## Setup
+
+- **Before:** your normal Java 21, plus the Jackson library in `lib/`. If `lib/` is missing, download it once (PowerShell, in this folder, ~2.3 MB from Maven Central):
+
+  ```
+  mkdir lib; $m = "https://repo1.maven.org/maven2/com/fasterxml/jackson/core"; foreach ($a in "jackson-databind","jackson-core","jackson-annotations") { Invoke-WebRequest "$m/$a/2.18.2/$a-2.18.2.jar" -OutFile "lib\$a-2.18.2.jar" }
+  ```
+
+- **After:** JDK 28 (https://jdk.java.net/28/), unzipped to `C:\jdk-28`. In the terminal you use for it, run once:
+
+  ```
+  $env:Path = "C:\jdk-28\bin;$env:Path"
+  ```
+
+  This only affects that terminal; your Java 21 stays the default everywhere else.
 
 ## Run
 
-Every command has the same shape: `java --add-modules jdk.incubator.json <File>.java`
-(the `--add-modules` part switches on the new JSON API — that's the only "incubator" thing to remember).
-
 ```
-java --add-modules jdk.incubator.json ConfigDemo.java
-java --add-modules jdk.incubator.json BuildJsonDemo.java
-java --add-modules jdk.incubator.json WeatherDemo.java
-java --add-modules jdk.incubator.json WeatherDemo.java --live
-java GenerateDump.java
-java --add-modules jdk.incubator.json ThreadDumpDemo.java
-java --add-modules jdk.incubator.json ThreadDumpDemo.java dump-from-java21.json
-jshell --add-modules jdk.incubator.json Tour.jsh
+java -cp "lib/*" ChocolateDemoBefore.java
+java --add-modules jdk.incubator.json ChocolateDemo.java
 ```
 
-Tip: press ↑ in the terminal to rerun the last command.
-
-## What each one shows
-
-| File | Point to make |
-|---|---|
-| ConfigDemo | Read `config.json`. Edit it live: `"port": "abc"` → clear error (Jackson would silently give 0); delete port → 8080; trailing comma → rejected |
-| BuildJsonDemo | Hand-written JSON breaks on quotes/newlines; `JsonObject` doesn't |
-| WeatherDemo | Average temperature from a forecast (offline file; `--live` = real API) |
-| GenerateDump | Makes a real thread dump of itself → `dump.json` |
-| ThreadDumpDemo | Lists the threads in a dump. Add `--virtual` for virtual threads only |
-| ThreadDumpDemo dump-from-java21.json | Same tool on a dump made by **Java 21**, like our apps today |
-| Tour.jsh | Interactive JShell walkthrough; stays open for questions |
-
-For one of our real apps: `jcmd <pid> Thread.dump_to_file -format=json mydump.json`
-then `java --add-modules jdk.incubator.json ThreadDumpDemo.java mydump.json`.
-
-## Before / After comparison
-
-Each demo has a **Before** version using Java 21 + Jackson (the way it's done today):
-`ConfigDemoBefore.java`, `BuildJsonDemoBefore.java`, `WeatherDemoBefore.java`, `ThreadDumpDemoBefore.java`.
-
-They need the Jackson library (not included in this repository). Download it once into `lib/` (PowerShell, in this folder, ~2.3 MB from Maven Central):
-
-```
-mkdir lib; $m = "https://repo1.maven.org/maven2/com/fasterxml/jackson/core"; foreach ($a in "jackson-databind","jackson-core","jackson-annotations") { Invoke-WebRequest "$m/$a/2.18.2/$a-2.18.2.jar" -OutFile "lib\$a-2.18.2.jar" }
-```
-
-In a real project this would come from Maven/Gradle — that's exactly the extra step the new API removes.
-
-Run them with your normal Java 21 (no JDK 28 needed):
-
-```
-java -cp "lib/*" ConfigDemoBefore.java
-java -cp "lib/*" BuildJsonDemoBefore.java
-java -cp "lib/*" WeatherDemoBefore.java
-java -cp "lib/*" ThreadDumpDemoBefore.java
-```
-
-Best moment for the audience: set `"port": "abc"` in `config.json`, then run both:
-- Before (Jackson): prints `port = 0` — silently wrong
-- After (JDK 28): clear error
+Both print the bill: **TOTAL 67,70 EUR**. Then change `"quantity": 12` to `"quantity": "12 pcs"` in `chocolate-order.json` and run both again.
 
 ## Notes
 
-- A `WARNING: Using incubator modules` line is normal.
+- `WARNING: Using incubator modules: jdk.incubator.json` is normal on the JDK 28 side.
+- JEP 540 is an incubator API: great for scripts, batch tools and tests, not for production yet.
+- The shop, the partner and the prices are fictional.
 - Feedback to the OpenJDK team: core-libs-dev@openjdk.org

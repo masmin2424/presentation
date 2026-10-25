@@ -1,81 +1,54 @@
-# Demo cheat sheet: two terminals, before vs after
+# Demo cheat sheet: the chocolate batch, two terminals 🍫
 
 ## Setup (once, before the meeting)
 
-- [ ] Java 21 installed (already done: it's your default `java`)
+- [ ] Java 21 installed (your default `java`)
 - [ ] JDK 28 unzipped to `C:\jdk-28` (from https://jdk.java.net/28/)
-- [ ] Jackson jars in `lib\` (already included in the demo folder)
-- [ ] `config.json` contains `"port": 9090`
+- [ ] Jackson jars in `lib\`
+- [ ] `chocolate-order.json` contains `"quantity": 12` for Manon cafe
 
 ## Open two terminals side by side
 
-In VS Code: open the folder `Downloads\jep540-demo`, then **Terminal › New Terminal**, then the **split** button (⊞) to get two terminals.
+In VS Code: open this folder, then **Terminal › New Terminal**, then the **split** button (⊞).
 
 ### LEFT terminal: BEFORE (Java 21 + Jackson)
 
-Nothing to set up. Plain `java` is already Java 21.
+Nothing to set up:
 
 ```
-java -version
-java -cp "lib/*" ConfigDemoBefore.java
-java -cp "lib/*" BuildJsonDemoBefore.java
-java -cp "lib/*" WeatherDemoBefore.java
-java -cp "lib/*" ThreadDumpDemoBefore.java
+java -cp "lib/*" ChocolateDemoBefore.java
 ```
 
-> `-cp "lib/*"` = "also load the Jackson library from the lib folder". Without it: compile errors.
+> `-cp "lib/*"` = "also load the Jackson library from the lib folder".
 
 ### RIGHT terminal: AFTER (JDK 28, nothing added)
 
-Run this line first, once per terminal. It only affects this terminal:
+Once per terminal:
 
 ```
 $env:Path = "C:\jdk-28\bin;$env:Path"
 ```
 
-```
-java -version
-java --add-modules jdk.incubator.json ConfigDemo.java
-java --add-modules jdk.incubator.json BuildJsonDemo.java
-java --add-modules jdk.incubator.json WeatherDemo.java
-java --add-modules jdk.incubator.json ThreadDumpDemo.java
-```
-
-> `--add-modules jdk.incubator.json` = "switch on the JSON API built into Java 28". No library needed.
-
-## The key moment (do it live)
-
-1. In `config.json`, change `9090` to `"abc"` and save.
-2. LEFT: `java -cp "lib/*" ConfigDemoBefore.java` prints `port = 0` (silently wrong).
-3. RIGHT: `java --add-modules jdk.incubator.json ConfigDemo.java` prints a clear error.
-4. Put `9090` back.
-
-## Belgian edition 🇧🇪 (fun examples)
-
-### Comics: Tintin, Lucky Luke, the Smurfs…
+Then:
 
 ```
-LEFT:   java -cp "lib/*" ComicsDemoBefore.java
-RIGHT:  java --add-modules jdk.incubator.json ComicsDemo.java
+java --add-modules jdk.incubator.json ChocolateDemo.java
 ```
 
-Add `dog` at the end to keep only heroes with a dog (Milou, Bill).
-Point to make: some heroes have no companion (field missing) and Blake & Mortimer has `"companion": null`.
-The new API handles both in one line: `tryGet("companion").flatMap(JsonValue::tryValue)`.
+> `--add-modules jdk.incubator.json` = "switch on the JSON API built into Java 28".
 
-### Chocolate: the "free pralines" bug
+## The script (about 3 minutes)
 
-```
-LEFT:   java -cp "lib/*" ChocolateDemoBefore.java
-RIGHT:  java --add-modules jdk.incubator.json ChocolateDemo.java
-```
+1. **Story:** "Every night a partner sends us an order file. Our batch turns it into invoices."
+2. **Run both:** same bill, **TOTAL 67,70 EUR**.
+3. **"The partner changes their script."** In `chocolate-order.json`, change `"quantity": 12` to `"quantity": "12 pcs"`. Save.
+4. **LEFT (Jackson):** `0 x Manon cafe`, **TOTAL 48,50 EUR**, no error. "The batch is green. We just gave away 12 pralines."
+5. **RIGHT (JDK 28):** `ORDER REJECTED`. "It refuses to guess. We find out tonight, not at the end of the month."
+6. **For fun:** try `"douze"`. Same result on both sides.
+7. **Bonus:** delete the `"giftWrap"` line. Both totals drop by 2,50 EUR, nothing breaks: optional fields are handled.
+8. **Put `12` back** and save.
 
-Both print the bill: TOTAL 67,70 EUR.
-Then in `chocolate-order.json` change `"quantity": 12` to `"quantity": "12 pcs"` (as if a partner changed their export script) and rerun both:
-- LEFT (Jackson): `0 x Manon cafe`, TOTAL 48,50 EUR. **12 pralines given away for free!**
-- RIGHT (JDK 28): `ORDER REJECTED` with a clear error.
-
-Put `12` back afterwards.
+Press ↑ to rerun the last command.
 
 ## What to say
 
@@ -83,7 +56,9 @@ Put `12` back afterwards.
 |---|---|---|
 | Java version | 21 (today) | 28 (March 2027) |
 | Extra library | Jackson (3 jars, or Maven) | None |
-| Wrong value | Hidden (`port = 0`) | Clear error |
+| `"12 pcs"` in the file | Silently 0, wrong invoice | Clear error |
 | Production ready | Yes | Not yet (incubator) |
 
-Tips: press ↑ to rerun the last command. The `WARNING: Using incubator modules` line in the right terminal is normal.
+> "In our apps, entities and validation catch most of this. The demo is about batch jobs, scripts and glue code, where those layers often don't exist. That's where strict-by-default helps."
+
+The `WARNING: Using incubator modules` line in the right terminal is normal.
