@@ -17,8 +17,8 @@ Scenario 1 is the normal file; scenarios 2 to 5 are each one realistic change in
 | # | Scenario file | What the partner's script now writes | BEFORE: Java 21 + Jackson (real output) | AFTER: JDK 28, JEP 540 | JEP 540 rule |
 |---|---|---|---|---|---|
 | 1 | `1-normal.json` | Nothing changed | Order #1042, 67,70 EUR | Order #1042, 67,70 EUR | Same result when the data is right |
-| 2 | `2-units-in-quantity.json` | `"quantity": "12 pcs"` | `0 x Manon cafe`, **48,50 EUR**. 12 pralines for free | **ORDER REJECTED** | **No silent conversion.** `asInt()` returns a number or fails |
-| 3 | `3-duplicate-key.json` | `"quantity"` written twice: 12, then 1 | Last one wins: `1 x Manon cafe`, **50,10 EUR** | **FILE REJECTED** | **Strict JSON (RFC 8259).** Duplicate keys are an error, not a guess |
+| 2 | `2-units-in-quantity.json` | `"quantity": "12 pcs"` | `0 x Hazelnut praline`, **48,50 EUR**. 12 pralines for free | **ORDER REJECTED** | **No silent conversion.** `asInt()` returns a number or fails |
+| 3 | `3-duplicate-key.json` | `"quantity"` written twice: 12, then 1 | Last one wins: `1 x Hazelnut praline`, **50,10 EUR** | **FILE REJECTED** | **Strict JSON (RFC 8259).** Duplicate keys are an error, not a guess |
 | 4 | `4-giftwrap-in-french.json` | `"giftWrap": "oui"` | Read as `false`: gift wrap **silently dropped**, 65,20 EUR | **ORDER REJECTED** | **No silent conversion.** `asBoolean()` accepts only `true`/`false` |
 | 5 | `5-new-order-id-format.json` | `"orderId": "A-1042"` instead of `1042` | **Invoice for order #0** | Invoice for order **A-1042** | **Sealed types + pattern matching.** The code handles number *and* text ids on purpose |
 

@@ -3,10 +3,10 @@
   "shop": "Chocolaterie Java (fictional)",
   "customer": "Team Java",
   "items": [
-    { "praline": "Manon cafe",    "quantity": 12, "unitPrice": 1.60 },
-    { "praline": "Caprice",       "quantity": 8,  "unitPrice": 1.40 },
-    { "praline": "Truffe nature", "quantity": 20, "unitPrice": 1.20 },
-    { "praline": "Mendiant",      "quantity": 6,  "unitPrice": 1.80 }
+    { "praline": "Hazelnut praline",  "quantity": 12, "unitPrice": 1.60 },
+    { "praline": "Speculoos praline", "quantity": 8,  "unitPrice": 1.40 },
+    { "praline": "Dark truffle",      "quantity": 20, "unitPrice": 1.20 },
+    { "praline": "Orangettes",        "quantity": 6,  "unitPrice": 1.80 }
   ],
   "giftWrap": true
 }

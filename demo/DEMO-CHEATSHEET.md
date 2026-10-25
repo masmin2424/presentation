@@ -26,8 +26,8 @@ RIGHT:  java --add-modules jdk.incubator.json ChocolateDemo.java scenarios/1-nor
 | File | LEFT (Jackson) shows | RIGHT (JDK 28) shows | Say |
 |---|---|---|---|
 | `1-normal.json` | 67,70 EUR | 67,70 EUR | "Good data: both work." |
-| `2-units-in-quantity.json` | `0 x Manon cafe`, 48,50 EUR | ORDER REJECTED | "No silent conversion." |
-| `3-duplicate-key.json` | `1 x Manon cafe`, 50,10 EUR | FILE REJECTED | "Strict JSON: no guessing which key wins." |
+| `2-units-in-quantity.json` | `0 x Hazelnut praline`, 48,50 EUR | ORDER REJECTED | "No silent conversion." |
+| `3-duplicate-key.json` | `1 x Hazelnut praline`, 50,10 EUR | FILE REJECTED | "Strict JSON: no guessing which key wins." |
 | `4-giftwrap-in-french.json` | no gift wrap, 65,20 EUR | ORDER REJECTED | "`"oui"` is not a boolean." |
 | `5-new-order-id-format.json` | Invoice for order **#0** | Invoice for order **A-1042** | "Sealed types: the new format is handled on purpose." |
 

@@ -62,4 +62,4 @@ That was JEP 198, and it tried to do everything: streaming, building, transforma
 
 - **If you don't know, say so:** "Good question, I'll check the JEP." The JEP is detailed and clearly written: https://openjdk.org/jeps/540
 - **Don't oversell it.** The strongest position is honesty: "Not for production yet, but free to try and useful for tools."
-- **Point back to the demos:** the "free pralines" moment (`0 x Manon cafe`) answers a lot of "why should I care" questions.
+- **Point back to the demos:** the "free pralines" moment (`0 x Hazelnut praline`) answers a lot of "why should I care" questions.
