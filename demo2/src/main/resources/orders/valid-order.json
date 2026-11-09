@@ -1,0 +1,20 @@
+{
+  "orderId": "CHOC-2027-0042",
+  "express": true,
+  "loyaltyPoints": 120,
+  "customer": {
+    "name": "Café Praline",
+    "address": {
+      "street": "Markt 1",
+      "city": "Bruges",
+      "country": "BE"
+    }
+  },
+  "currency": "EUR",
+  "discountCode": null,
+  "items": [
+    { "sku": "PRAL-36", "product": "Praline assortment, 36 pcs", "quantity": 4,  "unitPrice": 24.90, "giftWrap": true },
+    { "sku": "TRUF-12", "product": "Dark truffles, 12 pcs",      "quantity": 10, "unitPrice": 11.50 },
+    { "sku": "BAR-70",  "product": "70% dark bar",               "quantity": 25, "unitPrice": 3.20 }
+  ]
+}

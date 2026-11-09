@@ -1,0 +1,10 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="2. Order to invoice" type="Application" factoryName="Application" folderName="JDK 28 (built-in JSON)">
+    <option name="MAIN_CLASS_NAME" value="be.chocolatefactory.jdk28.Scene02_OrderToInvoice" />
+    <module name="jep540-chocolate-factory" />
+    <option name="VM_PARAMETERS" value="--add-modules jdk.incubator.json -Dstdout.encoding=UTF-8" />
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

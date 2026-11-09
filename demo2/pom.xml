@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>be.chocolatefactory</groupId>
+    <artifactId>jep540-chocolate-factory</artifactId>
+    <version>1.0.0</version>
+    <name>JEP 540 - Chocolate Factory demo</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.release>28</java.release>
+        <jackson.version>2.21.8</jackson.version>
+        <!-- Scene run by `mvn compile exec:exec` (override with -Dscene=...) -->
+        <scene>be.chocolatefactory.jdk28.Scene01_ReadOneField</scene>
+    </properties>
+
+    <dependencies>
+        <!-- Only the java25 package uses Jackson: it is the "before" side of the comparison.
+             The jdk28 package needs nothing: the JSON API ships with the JDK. -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.15.0</version>
+                <configuration>
+                    <release>${java.release}</release>
+                    <compilerArgs>
+                        <!-- THE CATCH (1/2): incubator module, must be added at compile time... -->
+                        <arg>--add-modules</arg>
+                        <arg>jdk.incubator.json</arg>
+                    </compilerArgs>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.6.3</version>
+                <configuration>
+                    <executable>java</executable>
+                    <arguments>
+                        <!-- THE CATCH (2/2): ...and again at run time -->
+                        <argument>--add-modules</argument>
+                        <argument>jdk.incubator.json</argument>
+                        <argument>-classpath</argument>
+                        <classpath/>
+                        <argument>${scene}</argument>
+                    </arguments>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <!-- Optional: `mvn -Pjava25 compile` builds only the Jackson side, on a plain JDK 25.
+             The jdk28 package is excluded because it cannot compile there. -->
+        <profile>
+            <id>java25</id>
+            <properties>
+                <java.release>25</java.release>
+                <scene>be.chocolatefactory.java25.Jackson01_ReadOneField</scene>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <compilerArgs combine.self="override"/>
+                            <excludes>
+                                <exclude>be/chocolatefactory/jdk28/**</exclude>
+                            </excludes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>exec-maven-plugin</artifactId>
+                        <configuration>
+                            <arguments combine.self="override">
+                                <argument>-classpath</argument>
+                                <classpath/>
+                                <argument>${scene}</argument>
+                            </arguments>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

@@ -1,0 +1,17 @@
+{
+  "orderId": "CHOC-2027-0043",
+  "customer": {
+    "name": "Hotel Ganache",
+    "address": { "city": "Ghent" }
+  },
+  "currency": "EUR",
+  "items": [
+    {
+      "sku": "PRAL-36",
+      "product": "Praline assortment, 36 pcs",
+      "quantity": 2,
+      "unitPrice": 24.90,
+      "quantity": 2000
+    }
+  ]
+}

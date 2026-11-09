@@ -1,0 +1,15 @@
+{
+  "orderId": "CHOC-2027-0044",
+  "customer": {
+    "name": "Tea Room Truffel",
+    "address": { "city": "Antwerp" }
+  },
+  "currency": "EUR",
+  "items": [
+    { "sku": "PRAL-36", "quantity": "2" },
+    { "sku": "TRUF-12", "quantity": 2.5 },
+    { "sku": "BAR-70",  "quantity": 3000000000 },
+    { "sku": "COIN-01", "quantity": null },
+    { "sku": "BOX-XL" }
+  ]
+}

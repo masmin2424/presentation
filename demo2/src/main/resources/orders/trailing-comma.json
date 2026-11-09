@@ -1,0 +1,7 @@
+{
+  "orderId": "CHOC-2027-0045",
+  "items": [
+    { "sku": "PRAL-36", "quantity": 1 },
+    { "sku": "BAR-70",  "quantity": 3 },
+  ]
+}
