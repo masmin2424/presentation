@@ -7,6 +7,7 @@ Each scene is one small class you run on stage. Four of the JDK 28 scenes have a
 version on the Java 25 side, so you can show the two side by side in IntelliJ.
 
 Slides: [`JEP540-Chocolate-Factory.pptx`](JEP540-Chocolate-Factory.pptx) (21 slides, speaker notes on each one).
+Presenter notes, one page per scene: [`docs/`](docs/README.md).
 The code on the slides is the code in this folder.
 
 ## Setup (do this the day before)
