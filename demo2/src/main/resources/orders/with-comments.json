@@ -1,0 +1,8 @@
+// typed by hand from the old spreadsheet
+{
+  "orderId": "CHOC-2027-0046",
+  // TODO ask the customer about gift wrap
+  "items": [
+    { "sku": "TRUF-12", "quantity": 2 }
+  ]
+}

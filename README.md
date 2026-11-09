@@ -12,6 +12,7 @@ A presentation and runnable demos about **JEP 540: Simple JSON API (Incubator)**
 | [`video/`](video/) | The presentation video and an AI-generated intro clip |
 | [`images/`](images/) | The AI-generated presenter image |
 | [`demo/`](demo/) | The chocolate batch demo, in a **before** (Java 21 + Jackson) and **after** (JDK 28 built-in API) version |
+| [`demo2/`](demo2/) | The chocolate factory demo: a Maven project for IntelliJ with 7 JDK 28 scenes, their Java 25 + Jackson counterparts, and its own [slide deck](demo2/JEP540-Chocolate-Factory.pptx) |
 | [`jdk/`](jdk/) | OpenJDK 28 early-access build 20 for **macOS (Apple Silicon)**, stored with Git LFS |
 
 ## JDK 28 for macOS (Apple Silicon)

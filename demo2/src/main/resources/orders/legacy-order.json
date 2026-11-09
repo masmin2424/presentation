@@ -1,0 +1,11 @@
+{
+  "orderId": 42,
+  "customer": {
+    "name": "Chocolate Corner",
+    "address": { "city": "Brussels" }
+  },
+  "currency": "EUR",
+  "items": [
+    { "sku": "PRAL-36", "product": "Praline assortment, 36 pcs", "quantity": 1, "unitPrice": 24.90 }
+  ]
+}
