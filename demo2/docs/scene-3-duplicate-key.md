@@ -7,7 +7,7 @@
 | Open | `orders/duplicate-key.json`, `jdk28/Scene03_DuplicateKey.java` |
 | Compare with | `java25/Jackson03_DuplicateKey.java` |
 | Run | `3. Duplicate key`, then `3. Duplicate key (Jackson)` |
-| Slide | 13 |
+| Slide | 14 |
 | Time | 3 min |
 
 ## 1. Set the scene

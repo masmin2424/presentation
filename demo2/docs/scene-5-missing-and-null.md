@@ -6,7 +6,7 @@
 |---|---|
 | Open | `orders/valid-order.json`, `jdk28/Scene05_MissingAndNull.java` |
 | Run | `5. Missing and null` |
-| Slide | 15 |
+| Slide | 16 |
 | Time | 2 min |
 
 ## 1. Set the scene
@@ -18,7 +18,7 @@ In `valid-order.json`, point at two things:
 
 > "JSON documents evolve. Fields appear, fields are optional, fields are null. These are two different situations and the API has a tool for each."
 
-## 2. The three tools (slide 15)
+## 2. The three tools (slide 16)
 
 | Method | Use it when | You get |
 |---|---|---|

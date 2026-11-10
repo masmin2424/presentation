@@ -16,7 +16,8 @@ Delivery tips:
 - **Pauses are your best tool.** After a punchline (2000 boxes, negative pralines), stop talking for two seconds. Let the room react.
 - **Be fair to Jackson.** Every time you admit where Jackson is better, the audience trusts the rest of what you say.
 - **Repeat the motto.** "Small by design, strict by design." Three or four times in the talk is right.
-- Timing: about 35 minutes plus questions. If you're late, shorten slides 6 and 20; never cut scenes 3 and 4.
+- **Let the video breathe.** Don't talk over it, and wait a beat after it ends before you speak.
+- Timing: about 37 minutes plus questions (video included). If you're late, shorten slides 7 and 21; never cut scenes 3 and 4.
 
 ---
 
@@ -24,19 +25,35 @@ Delivery tips:
 
 *[Walk to the middle of the stage. Don't touch the laptop yet. Smile. Wait two seconds.]*
 
+Good morning, everyone. The subject I'm bringing you today comes from Devoxx, the big Java conference in Antwerp. *[beat]* And if you were there, you know: AI, AI, AI, in almost every room. So I did something a little rebellious. I picked a talk with zero AI in it. *[pause]* No prompts, no agents, no chatbot. Just Java. And JSON.
+
+*[Optional: credit the original Devoxx talk and its speakers by name here.]*
+
 Quick show of hands: who in this room has ever eaten Belgian chocolate? *[hands]* Perfect. Everyone is qualified for this talk.
 
 Today I'm taking you into a chocolate factory. Not to make chocolate: to follow the paperwork. Orders come in, invoices go out. And in between, there's a program reading something called JSON.
 
 If you're not a developer: JSON is simply the order form that computer systems send to each other. Every app on your phone, every web shop, every banking screen speaks JSON all day long.
 
-And here's the news: after more than thirty years, Java, the language a big part of our software runs on, can finally read that order form on its own. No extra parts. That's JEP 540.
+And here's the news: after more than thirty years, Java, the language a big part of our software runs on, can finally read that order form on its own. That's JEP 540.
 
-I'll show you why it took twelve years, what it does, what it refuses to do, and the catch. Live. On a version of Java that isn't officially released yet. *[beat]* What could possibly go wrong?
+But first, let's see what the other programming languages think of Java. *[Click to the video.]*
 
-## Slide 2 · A whole library… to read one field
+## Slide 2 · Intro video: what the other languages think of Java
 
-*[Turn to the developers.]* Developers, this one is for you. Who has ever added Jackson to a project just to read one field? *[hands]* Yes. Me too.
+*[Play the video. Don't talk over it. Let the room laugh.]*
+
+*[When it ends, wait a beat.]* Ouch. *[smile]* But let's be honest… they have a point.
+
+In Python, reading JSON is one import from the standard library. In JavaScript, it's built into the language. In Go, it ships with the standard library too. And in Java, for years, the first answer on every forum was: "Just add Jackson."
+
+*[Optional, only if the video was made with AI: "OK, I lied a little: that video was made with AI. It's the only AI you'll see today. Promise."]*
+
+So let's look at what "just add Jackson" really costs. *[Click.]*
+
+## Slide 3 · A whole library… to read one field
+
+The video wasn't completely unfair. *[Turn to the developers.]* Developers: who has ever added Jackson to a project just to read one field? *[hands]* Yes. Me too.
 
 *[Turn to the business side.]* Let me translate. Jackson is a library: a ready-made component, written outside our company, that we plug into our software. Like buying ready-made praline fillings from a supplier. It saves a lot of time.
 
@@ -50,15 +67,15 @@ But now you depend on that supplier. You follow their updates. And when they hav
 
 *[Lower your voice.]* Well… almost zero. See that little star? Remember it. That's the catch, and I'll come back to it at the end.
 
-## Slide 3 · Four questions, one live demo
+## Slide 4 · Four questions, one live demo
 
 Four questions today. Why did it take twelve years? What does it do? What does it refuse to do, on purpose? And what's the catch?
 
-In the middle: a live demo. Seven short scenes. Chocolate orders go in, invoices come out, and some of the orders are… let's say, creative.
+In the middle: a live demo. Seven short scenes. Chocolate orders go in, invoices come out, and some of the orders are… let's say, creative. All of it live, on a version of Java that isn't officially released yet. *[beat]* What could possibly go wrong?
 
 If you remember one sentence from today, make it this one: **small by design, strict by design.** You'll hear it again.
 
-## Slide 4 · Nine words you'll hear today
+## Slide 5 · Nine words you'll hear today
 
 Before we go further: nine words in plain language. Developers, give me sixty seconds. Business colleagues, this slide is your survival kit.
 
@@ -74,7 +91,7 @@ Before we go further: nine words in plain language. Developers, give me sixty se
 - **Incubator:** the test kitchen. It's shipped, you can taste it, but the recipe can still change. Not for production.
 - **LTS:** long-term support. The version companies standardise on for years. For us, that's Java 25.
 
-## Slide 5 · Second attempt, smaller on purpose
+## Slide 6 · Second attempt, smaller on purpose
 
 So, why twelve years? Let's go back to June 2014. *[Point at the first card.]* JEP 198, "Light-Weight JSON API". Status: Closed, Withdrawn. *[pause]*
 
@@ -86,7 +103,7 @@ The demand never went away. In May 2025, Paul Sandoz from Oracle restarted the d
 
 **Business translation:** the second attempt worked because they cut the scope. A smaller project that ships beats a big one that doesn't. *[smile]* Sounds familiar?
 
-## Slide 6 · The whole API fits on one slide
+## Slide 7 · The whole API fits on one slide
 
 Here's the whole API. All of it. On one slide. *[pause]* Try that with Jackson's documentation.
 
@@ -96,7 +113,7 @@ On the right: the verbs. *Parse*: read the form. *Navigate*: get this field, get
 
 **Business translation:** this is what "small by design" looks like. Small means quick to learn, easy to review, and cheap to maintain for decades.
 
-## Slide 7 · Chocolate orders in, invoices out
+## Slide 8 · Chocolate orders in, invoices out
 
 Meet our customer: Café Praline, in Bruges. Four boxes of pralines, ten boxes of truffles, twenty-five dark bars.
 
@@ -106,7 +123,7 @@ This file contains every kind of JSON value on purpose: text, numbers, a true, a
 
 IntelliJ already underlines three of them in red. Java is going to be… less polite.
 
-## Slide 8 · The Chocolate Factory (live demo)
+## Slide 9 · The Chocolate Factory (live demo)
 
 Enough slides. Let's open the factory. *[Switch to IntelliJ.]*
 
@@ -114,7 +131,7 @@ Seven scenes. Each one is a tiny program that I start from this menu. On the sid
 
 For the non-developers: you don't need to read the code. Watch the output at the bottom. A green tick means "accepted", a red cross means "refused". *[beat]* Keep an eye on which one is actually good news.
 
-## Slide 9 · Scene 1 · Read one field, no cast
+## Slide 10 · Scene 1 · Read one field, no cast
 
 Scene one. The simplest job in the factory: where do we ship this order?
 
@@ -128,7 +145,7 @@ Now let me be honest, because honesty is a feature. *[Split the editor with the 
 
 *[Optional: change "city" to "town", run, show the clear error with the path, undo.]*
 
-## Slide 10 · Scene 2 · Navigate, convert, and keep the money exact
+## Slide 11 · Scene 2 · Navigate, convert, and keep the money exact
 
 Scene two. Real work: order in, invoice out.
 
@@ -140,7 +157,7 @@ Developers: never put money in a `double`. A double is approximate. Great for te
 
 JEP 540 keeps the number exactly as it was written in the file: 24.90, with the zero. We turn it into a `BigDecimal`, Java's exact type for money. No rounding, ever.
 
-## Slide 11 · Scene 2 · Build the invoice, print it two ways
+## Slide 12 · Scene 2 · Build the invoice, print it two ways
 
 Now we write the invoice. Plain Java maps and lists, nothing new to learn, wrapped with `of`.
 
@@ -150,7 +167,7 @@ Then two ways to print. Compact: one line, no spaces, for machines. Pretty: inde
 
 And to be fair: Jackson's builder is nicer for writing JSON. If writing JSON is your main job, Jackson is still your friend. The JDK team itself says writing is where they want feedback.
 
-## Slide 12 · Same field, same length, different cost
+## Slide 13 · Same field, same length, different cost
 
 Side by side. Top: Java 25 with Jackson. Bottom: JDK 28. Same length, I told you. Now look at the table.
 
@@ -162,7 +179,7 @@ Duplicate keys and decimals: that's the next two scenes, and that's where the re
 
 The last two lines: data binding and streaming. Jackson has them. The JDK doesn't, on purpose. Hold that thought.
 
-## Slide 13 · Scene 3 · Which quantity do we invoice?
+## Slide 14 · Scene 3 · Which quantity do we invoice?
 
 Scene three. Look at this order. *[Point.]* Quantity: 2. Unit price. Quantity: 2000.
 
@@ -176,7 +193,7 @@ The official JSON standard only says names *should* be unique. Should, not must.
 
 To be fair, Jackson can be strict, if you know the right switch. The JDK has no switch: it's always strict. **Strict by design.**
 
-## Slide 14 · Scene 4 · Five bad quantities, two behaviours
+## Slide 15 · Scene 4 · Five bad quantities, two behaviours
 
 Scene four. The one people remember. Five quantities, five ways real data goes wrong: the text "2", a two and a half, a number that's far too big, a null, and one that's simply missing.
 
@@ -188,7 +205,7 @@ Scene four. The one people remember. Five quantities, five ways real data goes w
 
 Jackson isn't wrong. It's lenient by design, and that's often convenient. But when it's about money, I'd rather have a program that says "I don't know" than one that guesses.
 
-## Slide 15 · Scene 5 · Missing is not the same as null
+## Slide 16 · Scene 5 · Missing is not the same as null
 
 Scene five. Not every missing field is an error.
 
@@ -198,7 +215,7 @@ Two different situations, two tools. `tryGet`: maybe the field isn't there. `try
 
 **Business translation:** the code itself says which fields are optional and which are mandatory. Your business rules, written where a developer can't miss them.
 
-## Slide 16 · Scene 6 · When the JSON changes shape
+## Slide 17 · Scene 6 · When the JSON changes shape
 
 Scene six. The same field changes type. The new web shop sends the order number as text. The old till system sends it as a number. This even happens inside Java: thread dumps changed exactly like this between JDK 26 and 27.
 
@@ -212,7 +229,7 @@ The bottom one is the beautiful part. Six cases, one per JSON type, and no defau
 
 And that's the real answer to "why twelve years": in 2014, Java couldn't do this.
 
-## Slide 17 · Scene 7 · Strict RFC 8259, and nothing else
+## Slide 18 · Scene 7 · Strict RFC 8259, and nothing else
 
 Last scene. Files typed by humans: a comment, an extra comma. Very common in configuration files.
 
@@ -224,7 +241,7 @@ Honest again: Jackson's default settings refuse these too. The difference is tha
 
 **Small by design, strict by design.** That's the whole API. *[Switch back to the slides.]*
 
-## Slide 18 · Small on purpose
+## Slide 19 · Small on purpose
 
 Now: what it refuses to do. Four things, on purpose.
 
@@ -238,9 +255,9 @@ Some developers online call it useless without data binding. I understand them. 
 
 So, is Jackson dead? *[pause]* No. The JEP has exactly one non-goal: not replacing libraries like Jackson. Starting with the JDK and moving to Jackson later is, in their words, not a failure.
 
-## Slide 19 · It's an incubator module
+## Slide 20 · It's an incubator module
 
-And now… the catch. Remember the little star on slide two?
+And now… the catch. Remember the little star on slide three, right after the video?
 
 *[Switch to IntelliJ. Open pom.xml. Comment out the two lines. Reload Maven. Build.]* Watch. I remove one flag… and the code doesn't even compile.
 
@@ -250,7 +267,7 @@ Incubator means test kitchen. You need the flag when you build and when you run.
 
 **Business translation:** perfect for experiments, tools and tests. Not something we put in a production service.
 
-## Slide 20 · Nobody knows. History gives a range
+## Slide 21 · Nobody knows. History gives a range
 
 How long does a recipe stay in the test kitchen? Nobody knows. History gives a range.
 
@@ -260,7 +277,7 @@ And first, JDK 28 has to ship: March 2027. It's not a long-term-support version.
 
 For us, on Java 25: nothing changes today. And that's fine.
 
-## Slide 21 · Keep Jackson. Try JDK 28 on the side
+## Slide 22 · Keep Jackson. Try JDK 28 on the side
 
 So what do we do on Monday?
 
@@ -270,7 +287,7 @@ Scripts, command-line tools, test helpers, small batch programs: download the JD
 
 Just not in production. Not yet.
 
-## Slide 22 · Questions?
+## Slide 23 · Questions?
 
 Let me finish where we started. *[Point left.]* 2014: a whole JSON library. Never shipped. *[Point right.]* 2026: the smallest thing that works. Integrated.
 

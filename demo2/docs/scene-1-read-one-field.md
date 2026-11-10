@@ -7,7 +7,7 @@
 | Open | `orders/valid-order.json`, `jdk28/Scene01_ReadOneField.java` |
 | Compare with | `java25/Jackson01_ReadOneField.java` |
 | Run | `1. Read one field`, then `1. Read one field (Jackson)` |
-| Slides | 9, then 12 for the comparison |
+| Slides | 10, then 13 for the comparison |
 | Time | 2 min |
 
 ## 1. Set the scene (before any code)
