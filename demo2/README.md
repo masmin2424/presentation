@@ -6,7 +6,7 @@ Story: chocolate orders arrive as JSON, we turn them into invoices.
 Each scene is one small class you run on stage. Four of the JDK 28 scenes have a Jackson
 version on the Java 25 side, so you can show the two side by side in IntelliJ.
 
-Slides: [`JEP540-Chocolate-Factory.pptx`](JEP540-Chocolate-Factory.pptx) (21 slides, speaker notes on each one).
+Slides: [`JEP540-Chocolate-Factory.pptx`](JEP540-Chocolate-Factory.pptx) (22 slides, with the full speaker script in the notes).
 Presenter notes, one page per scene: [`docs/`](docs/README.md).
 The code on the slides is the code in this folder.
 

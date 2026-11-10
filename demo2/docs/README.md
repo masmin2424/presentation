@@ -14,7 +14,9 @@ and the questions you may get.
 | 7 | [Strict parser](scene-7-strict-parser.md) | RFC 8259 only, no options | 2 min |
 | – | [The catch](the-catch.md) | It is an incubator: one flag, twice | 2 min |
 
-About 20 minutes of demo. Slides 7 to 16 of the deck follow the same order, and slides 18–19 are "the catch".
+About 20 minutes of demo. Slides 8 to 17 of the deck follow the same order, and slides 19–20 are "the catch".
+
+The whole talk, slide by slide, with plain-language explanations for the business side: [speaker script](speaker-script.md).
 
 ## The thread to repeat in every scene
 

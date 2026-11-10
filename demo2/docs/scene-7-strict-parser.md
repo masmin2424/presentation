@@ -6,7 +6,7 @@
 |---|---|
 | Open | `orders/trailing-comma.json`, `orders/with-comments.json`, `jdk28/Scene07_StrictParser.java` |
 | Run | `7. Strict parser` |
-| Slide | 16 |
+| Slide | 17 |
 | Time | 2 min |
 
 ## 1. Set the scene
@@ -60,7 +60,7 @@ String cleaned = Orders.read("with-comments.json").replaceAll("(?m)^\\s*//.*$", 
 
 > "So that's what it does. Now, what it refuses to do, and the catch."
 
-Go to slide 17 ("Small on purpose").
+Go to slide 18 ("Small on purpose").
 
 ## Questions you may get
 

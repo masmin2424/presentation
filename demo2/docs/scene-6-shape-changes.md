@@ -6,7 +6,7 @@
 |---|---|
 | Open | `orders/valid-order.json`, `orders/legacy-order.json`, `jdk28/Scene06_ShapeChanges.java` |
 | Run | `6. Shape changes (sealed switch)` |
-| Slide | 15 |
+| Slide | 16 |
 | Time | 3 min |
 
 ## 1. Set the scene

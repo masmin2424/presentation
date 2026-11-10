@@ -7,7 +7,7 @@
 | Open | `orders/bad-quantity.json`, `jdk28/Scene04_BadQuantity.java` |
 | Compare with | `java25/Jackson04_BadQuantity.java` |
 | Run | `4. Bad quantity`, then `4. Bad quantity (Jackson)` |
-| Slide | 13 |
+| Slide | 14 |
 | Time | 3 min |
 
 ## 1. Set the scene

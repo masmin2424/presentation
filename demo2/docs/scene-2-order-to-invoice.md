@@ -7,7 +7,7 @@
 | Open | `jdk28/Scene02_OrderToInvoice.java` |
 | Compare with | `java25/Jackson02_OrderToInvoice.java` |
 | Run | `2. Order to invoice`, then `2. Order to invoice (Jackson)` |
-| Slides | 9 (reading) and 10 (writing) |
+| Slides | 10 (reading) and 11 (writing) |
 | Time | 4 min |
 
 ## 1. Set the scene
@@ -16,7 +16,7 @@
 
 This is the only scene that does the full round trip. Explain it in two halves.
 
-## 2. First half: reading (slide 9)
+## 2. First half: reading (slide 10)
 
 ```java
 JsonValue order = Json.parse(Orders.read("valid-order.json"));
@@ -35,7 +35,7 @@ for (JsonValue item : order.get("items").asList()) {
    - "`toString()` on a JSON number gives back the number exactly as written in the file: `"24.90"`. So `new BigDecimal(value.toString())` loses nothing."
    - "There is no `asBigDecimal()` on purpose. The JEP itself tells you to write this one line."
 
-## 3. Second half: writing (slide 10)
+## 3. Second half: writing (slide 11)
 
 ```java
 var line = new LinkedHashMap<String, JsonValue>();   // keeps our member order
